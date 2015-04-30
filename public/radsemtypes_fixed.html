@@ -1,0 +1,154 @@
+<html>
+<head>
+<style>
+#container1 {
+    width: 1000px;
+    height: 1000px;
+    margin: 1em auto;
+}
+#container2 {
+    width: 1000px;
+    height: 1000px;
+    margin: 1em auto;
+}
+
+</style>
+<script src="http://code.jquery.com/jquery-git.js"></script>
+<script src="highcharts.js"></script>
+<script src="heatmap.js"></script>
+<script src="exporting.js"></script>
+<script src="highcharts-more.js"></script>
+<script>
+  $(document).ready( function () {
+     
+
+    $('#container1').highcharts({
+        
+        chart: {
+            type: 'heatmap',
+            marginTop: 100,
+            marginBottom: 100
+        },
+
+
+        title: {
+            text: 'Inheritance (y is a x) RadSem_fixed (Log counts)'
+        },
+
+        xAxis: {
+            categories: ['ABNM', 'ACTI', 'ANAT', 'CHEM', 'CONC', 'DEVI', 'DISO', 'DRUG', 'GEOG', 'GNPT', 'INDC', 'LIVB', 'OBJC', 'OBSV', 'OCCU', 'ORGA', 'PEOP', 'PHEN', 'PHYS', 'PROC', 'SPAT', 'TIME']
+        },
+
+        yAxis: {
+            categories: ['ABNM', 'ACTI', 'ANAT', 'CHEM', 'CONC', 'DEVI', 'DISO', 'DRUG', 'GEOG', 'GNPT', 'INDC', 'LIVB', 'OBJC', 'OBSV', 'OCCU', 'ORGA', 'PEOP', 'PHEN', 'PHYS', 'PROC', 'SPAT', 'TIME'],
+            title: null
+        },
+
+        colorAxis: {
+            min: 0,
+            minColor: '#FFFFF1',
+            maxColor: Highcharts.getOptions().colors[3]
+        },
+
+        legend: {
+            align: 'right',
+            layout: 'vertical',
+            margin: 0,
+            verticalAlign: 'top',
+            y: 25,
+            symbolHeight: 320
+        },
+
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.yAxis.categories[this.point.y] + '</b> relates <br><b>' +
+                    Math.round(Math.pow(2.17,this.point.value)) + '</b> items with <br><b>' + this.series.xAxis.categories[this.point.x] + '</b>  as parent';
+            }
+        },
+
+        series: [{
+            name: 'Is-a hierarchical conflicts',
+            borderWidth: 1,
+            data:[[0,0,9],[0,2,4],[0,6,9],[0,13,8],[1,1,7],[1,4,5],[1,6,5],[1,10,4],[1,13,7],[1,17,4],[1,18,5],[1,19,5],[2,0,5],[2,2,12],[2,3,6],[2,4,3],[2,6,4],[2,7,3],[2,9,7],[2,13,4],[2,18,3],[2,19,3],[2,20,4],[3,2,6],[3,3,11],[3,4,4],[3,5,6],[3,6,3],[3,7,10],[3,9,4],[3,11,4],[3,12,4],[3,13,4],[3,19,5],[4,0,4],[4,1,5],[4,2,7],[4,3,6],[4,4,9],[4,5,4],[4,6,6],[4,7,5],[4,9,3],[4,10,7],[4,11,6],[4,12,5],[4,13,7],[4,14,3],[4,16,5],[4,17,4],[4,18,6],[4,19,8],[4,20,6],[4,21,5],[5,3,6],[5,4,4],[5,5,10],[5,7,6],[5,12,6],[5,13,5],[5,19,5],[6,0,9],[6,1,3],[6,2,4],[6,3,3],[6,4,5],[6,6,12],[6,13,10],[6,18,5],[6,19,5],[7,2,4],[7,3,11],[7,5,7],[7,7,12],[7,11,3],[7,12,3],[7,19,5],[8,8,7],[8,12,4],[8,13,3],[9,3,4],[9,6,4],[9,9,9],[10,1,3],[10,3,4],[10,4,6],[10,6,3],[10,7,3],[10,10,8],[10,12,4],[10,13,6],[10,15,3],[10,17,3],[10,19,4],[10,20,5],[10,21,5],[11,3,6],[11,7,6],[11,11,10],[12,3,5],[12,4,5],[12,5,8],[12,7,5],[12,12,8],[12,15,5],[13,0,7],[13,1,6],[13,2,4],[13,3,4],[13,4,6],[13,5,4],[13,6,9],[13,10,6],[13,13,13],[13,16,5],[13,17,5],[13,18,6],[13,19,8],[13,20,5],[13,21,4],[14,1,3],[14,14,7],[14,16,6],[14,19,4],[15,12,5],[15,15,7],[15,16,3],[15,19,4],[16,4,3],[16,11,4],[16,13,5],[16,14,4],[16,15,5],[16,16,9],[17,1,4],[17,10,4],[17,13,6],[17,17,7],[17,18,4],[18,1,4],[18,2,4],[18,3,5],[18,4,5],[18,6,6],[18,7,4],[18,13,7],[18,17,4],[18,18,11],[18,19,4],[18,21,4],[19,0,4],[19,1,5],[19,3,4],[19,4,6],[19,5,5],[19,6,6],[19,7,4],[19,10,5],[19,13,10],[19,14,3],[19,18,4],[19,19,12],[20,2,6],[20,4,5],[20,8,3],[20,10,5],[20,12,5],[20,13,5],[20,15,3],[20,17,3],[20,18,3],[20,20,8],[21,4,4],[21,10,4],[21,13,5],[21,18,3],[21,21,7]],
+            dataLabels: {
+                enabled: true,
+                color: 'black',
+                style: {
+                    textShadow: 'none'
+                }
+            }
+        }]
+
+    });
+    
+    
+    $('#container2').highcharts({
+        
+        chart: {
+            type: 'heatmap',
+            marginTop: 40,
+            marginBottom: 40
+        },
+
+
+        title: {
+            text: 'UMLS Network rels (no Log counts)'
+        },
+
+        xAxis: {
+            categories: ['ABNM', 'ACTI', 'ANAT', 'CHEM', 'CONC', 'DEVI', 'DISO', 'DRUG', 'GEOG', 'GNPT', 'INDC', 'LIVB', 'OBJC', 'OBSV', 'OCCU', 'ORGA', 'PEOP', 'PHEN', 'PHYS', 'PROC', 'SPAT', 'TIME']
+        },
+
+        yAxis: {
+            categories: ['ABNM', 'ACTI', 'ANAT', 'CHEM', 'CONC', 'DEVI', 'DISO', 'DRUG', 'GEOG', 'GNPT', 'INDC', 'LIVB', 'OBJC', 'OBSV', 'OCCU', 'ORGA', 'PEOP', 'PHEN', 'PHYS', 'PROC', 'SPAT', 'TIME'],
+            title: null
+        },
+
+        colorAxis: {
+            min: 0,
+            minColor: '#FFFFF1',
+            maxColor: Highcharts.getOptions().colors[3]
+        },
+
+        legend: {
+            align: 'right',
+            layout: 'vertical',
+            margin: 0,
+            verticalAlign: 'top',
+            y: 25,
+            symbolHeight: 320
+        },
+
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.yAxis.categories[this.point.y] + '</b> has <br><b>' +
+                    this.point.value + '</b> relations with <br><b>' + this.series.xAxis.categories[this.point.x] + '</b>  ';
+            }
+        },
+
+        series: [{
+            name: 'Is-a hierarchical conflicts',
+            borderWidth: 1,
+            data:[[0,1,1],[0,6,1],[0,11,1],[0,13,2],[0,16,1],[0,17,1],[0,18,2],[0,19,1],[1,0,3],[1,4,2],[1,6,4],[1,8,1],[1,13,7],[1,14,3],[1,16,1],[1,19,3],[2,0,3],[2,3,10],[2,11,4],[2,13,3],[2,18,5],[2,19,12],[3,0,3],[3,2,8],[3,6,2],[3,7,1],[3,11,3],[3,13,3],[3,17,1],[3,18,5],[4,1,1],[4,13,1],[4,14,1],[4,15,1],[4,16,2],[4,19,1],[5,0,1],[5,6,2],[5,7,1],[5,13,3],[6,0,2],[6,1,2],[6,2,1],[6,11,4],[6,13,5],[6,16,1],[6,18,1],[6,19,1],[8,0,1],[8,6,1],[8,13,1],[9,2,4],[9,3,2],[9,18,2],[10,1,1],[10,18,1],[10,19,1],[10,20,1],[11,1,1],[11,3,4],[11,6,3],[12,0,1],[12,6,1],[12,13,1],[13,0,5],[13,1,3],[13,2,2],[13,3,1],[13,6,3],[13,11,5],[13,16,1],[13,17,1],[13,18,7],[13,19,3],[15,1,2],[15,4,1],[15,16,2],[16,0,1],[16,1,2],[16,4,2],[16,6,2],[16,12,2],[16,13,1],[16,14,1],[16,15,1],[17,0,1],[18,2,1],[18,3,2],[18,11,2],[18,13,1],[18,16,2],[18,21,3],[19,0,3],[19,3,13],[19,5,1],[19,6,4],[19,10,3],[19,12,2],[19,13,8],[19,16,2],[19,17,4],[19,18,2],[19,21,3],[21,18,3]],
+            dataLabels: {
+                enabled: true,
+                color: 'black',
+                style: {
+                    textShadow: 'none'
+                }
+            }
+        }]
+
+    });
+
+});
+
+
+</script>
+</head>
+<body>
+<div id="container1"></div>
+<div id="container2"></div>
+<div id="container3"></div>
+</body>
+</html>
