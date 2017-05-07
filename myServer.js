@@ -73,8 +73,12 @@ app.post('/blog/:name',function(req,res){
 
 //GET /blog/:name/info
 
-console.log("Web server running on port 8000");
 
-app.listen(8000);
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8000;
+var server_ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+
+app.listen(server_port,server_ip,function(){
+    console.log("Web server running on port ",server_port);
+});
 
 
