@@ -15,6 +15,7 @@
   },
   "devDependencies": {},
   "main": "server.js",
+  "scripts":{"start":"node myServer.js"},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/berlanga/TwitterStreams.git"
