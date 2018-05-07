@@ -74,7 +74,7 @@ app.post('/blog/:name',function(req,res){
 //GET /blog/:name/info
 
 
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8000;
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 3030;
 var server_ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 app.listen(server_port,server_ip,function(){
